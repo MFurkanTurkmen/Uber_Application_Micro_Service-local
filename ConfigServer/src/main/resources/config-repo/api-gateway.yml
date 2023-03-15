@@ -1,0 +1,26 @@
+server:
+  port: 80
+spring:
+  zipkin:
+    enabled: true
+
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+          default-filters:
+            - RewritePath= /(?<segment>.*), /$\{segment}
+          routes:
+            - id: auth-service
+              predicates:
+                - Path=/auth/**
+              uri: http://localhost:7070
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: auth
+                    fallbackUri: forward:/authfall
+
+
+
+

@@ -1,0 +1,9 @@
+
+R
+java:S4973"<Strings and Boxed types should be compared using "equals()".(ê«Ò†
+]
+java:S3973"GUse indentation to denote the code conditionally executed by this "if".(ê«Ò†
+¢
+java:S2681"†This line will not be executed conditionally; only the first line of this 2-line block will be. The rest will execute unconditionally.(“ºé™ùÿÿÿÿ
+H
+java:S1068"2Remove this unused "authRepository" private field.(—¸¨Ü

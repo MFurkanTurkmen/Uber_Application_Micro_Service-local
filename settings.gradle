@@ -1,0 +1,8 @@
+rootProject.name = 'UberApplication'
+include 'AuthMicroService'
+include 'DriverMicroService'
+include 'PassengerMicroService'
+include 'ConfigServer'
+include 'ApiGateway'
+include 'RideMicroService'
+
