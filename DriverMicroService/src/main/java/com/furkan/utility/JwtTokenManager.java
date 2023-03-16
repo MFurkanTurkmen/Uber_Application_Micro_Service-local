@@ -19,8 +19,6 @@ public class JwtTokenManager {
         try {
             token = JWT.create().withAudience()
                     .withClaim("id", id)
-                    .withClaim("howtopage", "AUTHPAGE")
-                    .withClaim("yetki", "DRIVER")
                     .withIssuer("MFT")
                     .withIssuedAt(new Date())
                     .withExpiresAt(new Date(System.currentTimeMillis() + exTime))

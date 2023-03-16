@@ -6,7 +6,6 @@ import com.furkan.exception.AuthException;
 import com.furkan.exception.EErrorType;
 import com.furkan.mapper.IAuthMapper;
 import com.furkan.rabbitmq.messagemodel.ModelFanout;
-import com.furkan.rabbitmq.messagemodel.ModelSave;
 import com.furkan.rabbitmq.producer.ProducerFanoutMessage;
 import com.furkan.rabbitmq.producer.ProducerDirectSave;
 import com.furkan.repository.IAuthRepository;

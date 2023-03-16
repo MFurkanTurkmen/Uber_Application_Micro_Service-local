@@ -4,7 +4,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import org.springframework.beans.factory.annotation.Value;
+import com.furkan.exception.AuthException;
+import com.furkan.exception.EErrorType;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @ControllerAdvice
 public class JwtTokenManager {
     private final String sifreAnahtari = "${TokenKey}";
-    private final Long exTime = 1000L * 60 * 15;
+    private final Long exTime = 1000L * 60 * 30; // token gecerlilik süresi: 30 dk
 
     public Optional<String> createToken(Long id) {
         String token = "";
@@ -38,8 +39,7 @@ public class JwtTokenManager {
             return Optional.of(decodedJWT.getClaim("id").asLong());
 
         }catch (Exception e){
-            System.out.println("token dogrularken hata");
-            return Optional.empty();
+            throw new AuthException(EErrorType.INVALID_TOKEN);
         }
 
     }

@@ -1,5 +1,15 @@
 server:
   port: 7070
+
+#logging:
+#  level:
+#    org.springframework: DEBUG
+#    com.furkan: INFO
+#  file:
+#    name: auth-service.log
+#  logback:
+#    rollingpolicy:
+#      max-file-size: 20MB
 spring:
   security:
     user:

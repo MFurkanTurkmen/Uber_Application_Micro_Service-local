@@ -2,7 +2,7 @@ package com.furkan.config.security;
 
 import com.furkan.repository.entity.Autho;
 import com.furkan.repository.entity.Driver;
-import com.furkan.service.DriverAuthorizationsService;
+import com.furkan.service.DriverAuthoService;
 import com.furkan.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,7 +21,7 @@ public class JwtUserDetail implements UserDetailsService {
     @Autowired
      DriverService driverService;
     @Autowired
-    DriverAuthorizationsService authorizationsService;
+    DriverAuthoService authorizationsService;
 
 
 
@@ -34,10 +34,11 @@ public class JwtUserDetail implements UserDetailsService {
         Optional<Driver> driver = driverService.findByAuthId(authid);
         if (driver.isEmpty()) return null;
         List<GrantedAuthority> authorities= new ArrayList<>();
-        for (Autho enums: authorizationsService.driverIdileYetkiListesi(driver.get().getId()) ){
+        for (Autho enums: authorizationsService.getDriverAutho(driver.get().getId()) ){
             authorities.add(new SimpleGrantedAuthority(enums.name()));
         }
 
+        System.out.println(authorities.toString());
         return User.builder()
                 .username(driver.get().getUsername())
                 .password("")

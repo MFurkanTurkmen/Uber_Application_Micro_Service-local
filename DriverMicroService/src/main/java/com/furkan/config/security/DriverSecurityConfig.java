@@ -17,14 +17,11 @@ public class DriverSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.authorizeRequests()
-                //.antMatchers("/swagger-ui/**").authenticated() // swagger 'a ilk girisi engelledik.
-               // .antMatchers("/auth/gatewaymesaj").authenticated() // apiden giden mesaj istegini engelledik
-                //.antMatchers("/swagger-ui/index.html#/auth-controller/**").authenticated() //gelenleri engelle get isteklerini engellemedi sor
-                .anyRequest().permitAll();
 
-//                .antMatchers("/swagger-ui/**").permitAll() // çok değişik yerlere girdik
-//                .anyRequest().authenticated(); // swagger'ın kendi deneme yerine gittik any request ve ant matchersi yer degiştirince patladı
+                .antMatchers("/swagger-ui/**","/v3/api-docs/**").permitAll()   // izin verildi
+                .anyRequest().authenticated(); // engellediklerimiz
         httpSecurity.formLogin();
+        httpSecurity.csrf().disable();
         httpSecurity.addFilterBefore(getJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }

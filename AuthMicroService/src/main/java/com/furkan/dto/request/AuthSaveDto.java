@@ -13,7 +13,6 @@ public class AuthSaveDto {
     private String name;
     private String surname;
     private String password;
-    private String repassword;
     private String email;
     private Type type;
 }

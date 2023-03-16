@@ -1,5 +1,15 @@
 server:
   port: 7071
+logging:
+   level:
+     org.springframework: DEBUG
+     com.furkan: DEBUG
+   file:
+     name: driver-service.log
+   logback:
+     rollingpolicy:
+       max-file-size: 20MB
+
 spring:
   security:
     user:

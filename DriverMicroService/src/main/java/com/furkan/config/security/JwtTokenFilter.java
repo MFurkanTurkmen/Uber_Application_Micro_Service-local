@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class JwtTokenFilter extends OncePerRequestFilter {
+    // 403 hatası burada olabilir
 
     @Autowired
     private JwtTokenManager jwtTokenManager;

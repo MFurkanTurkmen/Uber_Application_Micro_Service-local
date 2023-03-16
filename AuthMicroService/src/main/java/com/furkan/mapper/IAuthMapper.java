@@ -5,6 +5,7 @@ import com.furkan.dto.request.AuthSaveDto;
 import com.furkan.rabbitmq.messagemodel.ModelSave;
 import com.furkan.repository.entity.Auth;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
@@ -15,5 +16,6 @@ public interface IAuthMapper {
     Auth toAuth(final AuthSaveDto dto);
     AuthSaveDto toDto(final Auth auth);
     Auth toAuth(final AuthLoginDto dto);
+    @Mapping(source = "id",target = "authId")
     ModelSave ToModel(final Auth auth);
 }
