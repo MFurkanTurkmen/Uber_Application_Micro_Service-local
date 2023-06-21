@@ -38,7 +38,6 @@ public class JwtUserDetail implements UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(enums.name()));
         }
 
-        System.out.println(authorities.toString());
         return User.builder()
                 .username(driver.get().getUsername())
                 .password("")

@@ -21,9 +21,10 @@ public class AuthSecurityConfig {
                // .antMatchers("/auth/gatewaymesaj").authenticated() // apiden giden mesaj istegini engelledik
                 //.antMatchers("/swagger-ui/index.html#/auth-controller/**").authenticated() //gelenleri engelle get isteklerini engellemedi sor
 
-//                .antMatchers("/swagger-ui/**").permitAll() // çok değişik yerlere girdik
-                .anyRequest().authenticated(); // swagger'ın kendi deneme yerine gittik any request ve ant matchersi yer degiştirince patladı
-        httpSecurity.formLogin();
+                .antMatchers("/swagger-ui/**","/v3/api-docs/**").permitAll()   // izin verildi
+                .anyRequest().authenticated(); // HEPSİNİ ENGELLEDİ
+
+        httpSecurity.csrf().disable();
         httpSecurity.addFilterBefore(getJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }

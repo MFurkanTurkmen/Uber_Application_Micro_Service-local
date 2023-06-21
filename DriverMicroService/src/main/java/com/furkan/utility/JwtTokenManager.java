@@ -4,6 +4,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.furkan.exception.DriverException;
+import com.furkan.exception.EErrorType;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import java.util.Date;
@@ -37,8 +39,8 @@ public class JwtTokenManager {
             return Optional.of(decodedJWT.getClaim("id").asLong());
 
         }catch (Exception e){
-            System.out.println("token dogrularken hata");
-            return Optional.empty();
+            System.out.println("JwtTokenManager da validToken metodu:");
+            throw new DriverException(EErrorType.INVALID_TOKEN);
         }
 
     }

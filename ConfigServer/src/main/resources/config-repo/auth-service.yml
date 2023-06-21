@@ -1,15 +1,5 @@
 server:
-  port: 7070
-
-#logging:
-#  level:
-#    org.springframework: DEBUG
-#    com.furkan: INFO
-#  file:
-#    name: auth-service.log
-#  logback:
-#    rollingpolicy:
-#      max-file-size: 20MB
+  port: 3030
 spring:
   security:
     user:
@@ -20,7 +10,6 @@ spring:
     base-url: http://localhost:9411
     service:
       name: auth-service
-
   rabbitmq:
     host: localhost
     port: 5672
@@ -28,11 +17,21 @@ spring:
     password: password
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5500/AuthDB
+    url: jdbc:postgresql://localhost:5432/UberAuthDB
     username: postgres
     password: asd123asd
   jpa:
     hibernate:
       ddl-auto: update
 
-TokenKey: ${TOKEN_KEY}
+TokenKey: "ThWmZq4t7w!z%C*F-JaNdRgUjXn2r5u8x/A?D(G+KbPeShVmYp3s6v9y$B&E)H@M"
+
+rabbitmq:
+  exchange:
+    direct: "direct_exchange"
+  queue:
+    register-driver: "queue_register_driver"
+    register-passenger: "queue_register_passenger"
+  key:
+    register-driver: "key_register_driver"
+    register-passenger: "key_register_passenger"

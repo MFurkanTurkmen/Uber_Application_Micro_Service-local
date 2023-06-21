@@ -19,11 +19,26 @@ public class PassengerAuthoService extends ServiceManagerImpl<PassengerAutho,Lon
         super(passengerAuthoRepository);
         this.passengerAuthoRepository = passengerAuthoRepository;
     }
-    public List<Autho> findAuthoByPassengerId(Long passengerID){
-        List<Autho> authoList= new ArrayList<>();
-        for (PassengerAutho autho: passengerAuthoRepository.findByPassengerId(passengerID)){
-            authoList.add(autho.getAutho());
+    public List<Autho> getPassengerAutho(Long passengerId){
+        List<PassengerAutho> passengerAuthoList=passengerAuthoRepository.findOptionalByPassengerId(passengerId).get();
+        List<Autho> enumList=new ArrayList<>();
+        for (PassengerAutho passenger: passengerAuthoList){
+            Autho anEnum=passenger.getAutho();
+            enumList.add(anEnum);
         }
-        return authoList;
+        return enumList;
+    }
+
+
+    public void setDriverAutho(Long passengerId){
+        List<PassengerAutho> authoList= passengerAuthoRepository.findOptionalByPassengerId(passengerId).get().stream().toList();
+        PassengerAutho passengerAutho=null;
+        if (authoList.isEmpty()||authoList.stream().count()==0){
+            passengerAutho = passengerAutho.builder()
+                    .autho(Autho.SLEEPER)
+                    .passengerId(passengerId)
+                    .build();
+        }
+        passengerAuthoRepository.save(passengerAutho);
     }
 }

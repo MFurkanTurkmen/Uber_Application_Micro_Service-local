@@ -1,5 +1,5 @@
 server:
-  port: 7072
+  port: 3032
 spring:
   security:
     user:
@@ -17,7 +17,7 @@ spring:
     password: password
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5500/PassengerDB
+    url: jdbc:postgresql://localhost:5432/PassengerDB
     username: postgres
     password: asd123asd
   jpa:

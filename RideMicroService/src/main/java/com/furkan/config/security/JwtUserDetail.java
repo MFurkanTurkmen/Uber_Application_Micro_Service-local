@@ -1,10 +1,7 @@
 package com.furkan.config.security;
 
-import com.furkan.repository.IPassengerAuthoRepository;
-import com.furkan.repository.entity.Autho;
-import com.furkan.repository.entity.Passenger;
-import com.furkan.service.PassengerAuthoService;
-import com.furkan.service.PassengerService;
+import com.furkan.repository.entity.Ride;
+import com.furkan.service.RideService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,28 +14,25 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class JwtUserDetail implements UserDetailsService {
     @Autowired
-     PassengerService passengerService;
-    @Autowired
-    PassengerAuthoService passengerAuthoService;
-
+    RideService rideService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return null;
     }
 
-    public UserDetails getUserDetailObject(Long authId){
-        Optional<Passenger> passenger = passengerService.findByAuthId(authId);
-        if (passenger.isEmpty()) return null;
-        List<GrantedAuthority> authorities= new ArrayList<>();
-        for (Autho x: passengerAuthoService.getPassengerAutho(passenger.get().getAuthId()) ){
-            authorities.add(new SimpleGrantedAuthority(x.name()));
-        }
+    public UserDetails getUserDetailObject(Long rideId) {
+        Optional<Ride> ride = rideService.findById(rideId);
+        if (ride.isEmpty()) return null;
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        // authorities.add(new) hata olursa burada
+
         return User.builder()
-                .username(passenger.get().getUsername())
+                .username(String.valueOf(ride.get().getId()))
                 .password("")
                 .authorities(authorities)
                 .build();

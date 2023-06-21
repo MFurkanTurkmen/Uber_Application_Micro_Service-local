@@ -20,11 +20,11 @@ public class AuthSecurityConfig {
                 //.antMatchers("/swagger-ui/**").authenticated() // swagger 'a ilk girisi engelledik.
                // .antMatchers("/auth/gatewaymesaj").authenticated() // apiden giden mesaj istegini engelledik
                 //.antMatchers("/swagger-ui/index.html#/auth-controller/**").authenticated() //gelenleri engelle get isteklerini engellemedi sor
-                //.anyRequest().permitAll();
 
-                .antMatchers("/swagger-ui/**").permitAll() // swagger bağlantısı icin api v1 de yazmak lazım.
-                .anyRequest().authenticated();
-        httpSecurity.formLogin();
+//                .antMatchers("/swagger-ui/**").permitAll() // çok değişik yerlere girdik
+                .anyRequest().permitAll(); // HEPSİ ACİK
+
+        httpSecurity.csrf().disable();
         httpSecurity.addFilterBefore(getJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }

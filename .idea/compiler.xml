@@ -9,10 +9,10 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.26/8f8cf0372abf564913e9796623aac4c8ea44025a/lombok-1.18.26.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mapstruct/mapstruct-processor/1.5.3.Final/dce418bedafd71ff8dd2cef15006c0fee788b073/mapstruct-processor-1.5.3.Final.jar" />
         </processorPath>
-        <module name="com.furkan.UberApplication.ConfigServer.main" />
+        <module name="PassengerMicroService.UberApplication.PassengerMicroService.main" />
         <module name="UberApplication.main" />
-        <module name="com.furkan.UberApplication.PassengerMicroService.main" />
-        <module name="com.furkan.UberApplication.AuthMicroService.main" />
+        <module name="AuthMicroService.UberApplication.AuthMicroService.main" />
+        <module name="ConfigServer.UberApplication.ConfigServer.main" />
         <module name="com.furkan.UberApplication.DriverMicroService.main" />
         <module name="com.furkan.UberApplication.ApiGateway.main" />
         <module name="UberApplication.RideMicroService.main" />

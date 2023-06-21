@@ -25,14 +25,13 @@ public class DriverController {
         return ResponseEntity.ok(driverService.findAll());
     }
 
-    @PostMapping("/exp")
-    @PreAuthorize("hasAuthority('BASIC')")
-    public ResponseEntity<String> updateDriverExp(@RequestBody BaseDriverDto dto){
-        return ResponseEntity.ok(driverService.updateDriverExp(dto));
-    }
+
 
     @GetMapping("/findall2")
-    @PreAuthorize("hasAuthority('MIDDLE')")
+    //@PreAuthorize("hasAuthority('MASTER')" + "|| hasAuthority('MIDDLE')")  // çalışıyor ikisinden birisi olsa yeter
+    //@PreAuthorize(value="hasAuthority('MASTER') or hasAuthority('MIDDLE')") // çalışıyor ikisinden birisi olsa yeter
+    //@PreAuthorize("hasAuthority('MIDDLE')")
+    @PreAuthorize(value="hasAuthority('MASTER') and hasAuthority('MIDDLE')") // çalışıyor ikisinden birisi olsa yeter
     public ResponseEntity<List<Driver>> getDriver2(){
         return ResponseEntity.ok(driverService.findAll());
     }

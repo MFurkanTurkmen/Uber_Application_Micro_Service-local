@@ -9,7 +9,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PassengerMicroService/UberApplication.PassengerMicroService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/PassengerMicroService/UberApplication.PassengerMicroService.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AuthMicroService/com.furkan.UberApplication.AuthMicroService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/AuthMicroService/com.furkan.UberApplication.AuthMicroService.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ConfigServer/com.furkan.UberApplication.ConfigServer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ConfigServer/com.furkan.UberApplication.ConfigServer.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DriverMicroService/com.furkan.UberApplication.DriverMicroService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DriverMicroService/com.furkan.UberApplication.DriverMicroService.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PassengerMicroService/com.furkan.UberApplication.PassengerMicroService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/PassengerMicroService/com.furkan.UberApplication.PassengerMicroService.main.iml" />
     </modules>
   </component>

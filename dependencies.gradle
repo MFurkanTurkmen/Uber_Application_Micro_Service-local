@@ -31,6 +31,8 @@ ext {
 
             // Database
             postgreSql                  : "org.postgresql:postgresql:$versions.postgreSql",
+            MongoDB                     : "org.springframework.boot:spring-boot-starter-data-mongodb:$versions.springBoot",
+
 
             // Genel BAğımlılıklar
             lombok                      : "org.projectlombok:lombok:$versions.lombok",

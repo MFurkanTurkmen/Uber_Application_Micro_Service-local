@@ -14,9 +14,8 @@ import java.util.List;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table
 @ToString
+
 public class Driver extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +28,5 @@ public class Driver extends BaseEntity {
     private int age;
     private String car;
     private int experience;
+
 }

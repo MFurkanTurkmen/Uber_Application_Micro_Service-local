@@ -1,15 +1,6 @@
-server:
-  port: 3031
-logging:
-   level:
-     org.springframework: DEBUG
-     com.furkan: DEBUG
-   file:
-     name: driver-service.log
-   logback:
-     rollingpolicy:
-       max-file-size: 20MB
 
+server:
+  port: 3033
 spring:
   security:
     user:
@@ -19,7 +10,7 @@ spring:
     enabled: true
     base-url: http://localhost:9411
     service:
-      name: driver-service
+      name: ride-service
   rabbitmq:
     host: localhost
     port: 5672
@@ -27,9 +18,13 @@ spring:
     password: password
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/DriverDB
+    url: jdbc:postgresql://localhost:5432/RideDB
     username: postgres
     password: asd123asd
   jpa:
     hibernate:
       ddl-auto: update
+
+
+
+

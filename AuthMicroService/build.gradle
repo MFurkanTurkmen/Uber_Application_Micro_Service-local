@@ -6,5 +6,6 @@ buildscript {
 dependencies {
     implementation libs.springBootStarterDataJpa
     implementation libs.postgreSql
+    implementation 'com.cloudinary:cloudinary-http44:1.31.0'
     implementation libs.springBootRabbitMQ
 }

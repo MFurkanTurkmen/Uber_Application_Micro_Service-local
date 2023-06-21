@@ -27,7 +27,6 @@ public class DriverAuthoService extends ServiceManagerImpl<DriverAutho,Long> {
     public List<Autho> getDriverAutho(Long driverId){
         List<DriverAutho> driverAuthorizations=driverAuthoRepository.findOptionalByDriverId(driverId).get();
         List<Autho> enumList=new ArrayList<>();
-
         for (DriverAutho driver: driverAuthorizations){
             Autho anEnum=driver.getAutho();
             enumList.add(anEnum);

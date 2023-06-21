@@ -2,8 +2,10 @@ package com.furkan.controller;
 
 
 import com.furkan.dto.request.AuthLoginDto;
-import com.furkan.dto.request.AuthSaveDto;
+import com.furkan.dto.request.RegisterDriverRequestDto;
+import com.furkan.dto.request.RegisterPassengerRequestDto;
 import com.furkan.service.AuthService;
+import com.furkan.utility.RegisterExceptionControl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,27 +15,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 public class AuthController {
     private final AuthService authService;
+    private final RegisterExceptionControl registerExceptionControl;
 
-    @PostMapping("/save")
-    public ResponseEntity<String> createAuth(@RequestBody AuthSaveDto dto){
-        authService.save(dto);
-        return ResponseEntity.ok(dto.getSurname()+": kayit edildi");
+
+    @PostMapping("/registerpassenger")
+    @CrossOrigin("*")
+    public ResponseEntity<Boolean> registerPassenger(RegisterPassengerRequestDto dto) {
+        registerExceptionControl.ControllerControl(dto.getPassword(),dto.getRePassword(),dto.getAge(),dto.getEmail(),dto.getName());
+        return ResponseEntity.ok(authService.savePassenger(dto));
+    }
+
+    @PostMapping("/registerdriver")
+    @CrossOrigin("*")
+    public ResponseEntity<Boolean> registerDriver(RegisterDriverRequestDto dto){
+        registerExceptionControl.ControllerControl(dto.getPassword(),dto.getRePassword(),dto.getAge(),dto.getEmail(),dto.getName());
+        return ResponseEntity.ok(authService.saveDriver(dto));
     }
 
 
-    @PostMapping("/login")
-    public ResponseEntity<String> doLogin(@RequestBody AuthLoginDto dto){
-        return ResponseEntity.ok(authService.doLogin(dto));
-    }
 
-    @PostMapping("/fanoutdeneme")
-    public ResponseEntity<String> fanoutDeneme(@RequestBody String mesaj){
-        authService.fanoutDeneme(mesaj);
-        return ResponseEntity.ok("mesaj gönderildi");
-    }
-    @GetMapping("/gatewaydeneme")
-    public ResponseEntity<String> gatewayMessageDeneme( String mesajj){
-        return ResponseEntity.ok(authService.apideneme(mesajj));
-    }
+
 
 }
