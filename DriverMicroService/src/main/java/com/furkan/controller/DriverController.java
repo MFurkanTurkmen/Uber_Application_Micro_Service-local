@@ -29,7 +29,7 @@ public class DriverController {
 
     @GetMapping("/findall2")
     //@PreAuthorize("hasAuthority('MASTER')" + "|| hasAuthority('MIDDLE')")  // çalışıyor ikisinden birisi olsa yeter
-    //@PreAuthorize(value="hasAuthority('MASTER') or hasAuthority('MIDDLE')") // çalışıyor ikisinden birisi..
+    //@PreAuthorize(value="hasAuthority('MASTER') or hasAuthority('MIDDLE')") // çalışıyor ikisinden birisi.
     //@PreAuthorize("hasAuthority('MIDDLE')")
     @PreAuthorize(value="hasAuthority('MASTER') and hasAuthority('MIDDLE')") // çalışıyor ikisinden birisi olsa yeter
     public ResponseEntity<List<Driver>> getDriver2(){
